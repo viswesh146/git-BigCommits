@@ -1,0 +1,440 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>gitbigcommits.core package &#8212; GitBigCommits 1.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="gitbigcommits.report_layer package" href="gitbigcommits.report_layer.html" />
+    <link rel="prev" title="gitbigcommits.prevent_commits package" href="gitbigcommits.prevent_commits.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="gitbigcommits.report_layer.html" title="gitbigcommits.report_layer package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="gitbigcommits.prevent_commits.html" title="gitbigcommits.prevent_commits package"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">GitBigCommits 1.0.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="gitbigcommits-core-package">
+<h1>gitbigcommits.core package<a class="headerlink" href="#gitbigcommits-core-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-gitbigcommits.core.git_commit_utility">
+<span id="gitbigcommits-core-git-commit-utility-module"></span><span id="git-core-label"></span><h2>gitbigcommits.core.git_commit_utility module<a class="headerlink" href="#module-gitbigcommits.core.git_commit_utility" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gitbigcommits.core.git_commit_utility.ExtraCommitInfo">
+<em class="property">class </em><code class="descclassname">gitbigcommits.core.git_commit_utility.</code><code class="descname">ExtraCommitInfo</code><span class="sig-paren">(</span><em>last_commit_info_obj</em>, <em>diff_time</em>, <em>branch_name</em>, <em>first_commit_info=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitbigcommits/core/git_commit_utility.html#ExtraCommitInfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gitbigcommits.core.git_commit_utility.ExtraCommitInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#gitbigcommits.core.git_data_collection.CommitInfo" title="gitbigcommits.core.git_data_collection.CommitInfo"><code class="xref py py-class docutils literal"><span class="pre">gitbigcommits.core.git_data_collection.CommitInfo</span></code></a></p>
+<dl class="class">
+<dt id="gitbigcommits.core.git_commit_utility.ExtraCommitInfo.ExtraCommitInfo">
+<em class="property">class </em><code class="descname">ExtraCommitInfo</code><a class="headerlink" href="#gitbigcommits.core.git_commit_utility.ExtraCommitInfo.ExtraCommitInfo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>This class hold info related to the commit object.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="gitbigcommits.core.git_commit_utility.GitFatCheckutility">
+<em class="property">class </em><code class="descclassname">gitbigcommits.core.git_commit_utility.</code><code class="descname">GitFatCheckutility</code><span class="sig-paren">(</span><em>git_folder_path</em>, <em>threshold_size_in_kb</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitbigcommits/core/git_commit_utility.html#GitFatCheckutility"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gitbigcommits.core.git_commit_utility.GitFatCheckutility" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#gitbigcommits.core.git_data_collection.GitFatFiles" title="gitbigcommits.core.git_data_collection.GitFatFiles"><code class="xref py py-class docutils literal"><span class="pre">gitbigcommits.core.git_data_collection.GitFatFiles</span></code></a></p>
+<dl class="class">
+<dt id="gitbigcommits.core.git_commit_utility.GitFatCheckutility.GitFatCheckutility">
+<em class="property">class </em><code class="descname">GitFatCheckutility</code><a class="headerlink" href="#gitbigcommits.core.git_commit_utility.GitFatCheckutility.GitFatCheckutility" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>git_folder_path</strong> – Directory of your git repo</li>
+<li><strong>threshold_size_in_kb</strong> – The size which you consider as big commits, given in kb.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="gitbigcommits.core.git_commit_utility.GitFatCheckutility.domant_branch_info">
+<code class="descname">domant_branch_info</code><span class="sig-paren">(</span><em>threshold_val=4320000</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitbigcommits/core/git_commit_utility.html#GitFatCheckutility.domant_branch_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gitbigcommits.core.git_commit_utility.GitFatCheckutility.domant_branch_info" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>threshold_val</strong> – the value beyond which the branch is</td>
+</tr>
+</tbody>
+</table>
+<p>considered as dormant. It is given in seconds. (default 4320000)
+which is 50 days.
+:return: a list of dictionary with branch information above the given threshold value.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gitbigcommits.core.git_commit_utility.GitFatCheckutility.form_all_info_for_a_blob_sha">
+<code class="descname">form_all_info_for_a_blob_sha</code><span class="sig-paren">(</span><em>blob_sha</em>, <em>time_zone=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitbigcommits/core/git_commit_utility.html#GitFatCheckutility.form_all_info_for_a_blob_sha"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gitbigcommits.core.git_commit_utility.GitFatCheckutility.form_all_info_for_a_blob_sha" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>blob_sha</strong> – hashid of a blob object</li>
+<li><strong>time_zone</strong> – in the remote repo, the timezone may be different</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>from your local time zone, give your timezone. (default None).
+:return: a dict of all necessary info</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gitbigcommits.core.git_commit_utility.GitFatCheckutility.get_all_remote_branch_list">
+<code class="descname">get_all_remote_branch_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitbigcommits/core/git_commit_utility.html#GitFatCheckutility.get_all_remote_branch_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gitbigcommits.core.git_commit_utility.GitFatCheckutility.get_all_remote_branch_list" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">all remote branches available as a list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gitbigcommits.core.git_commit_utility.GitFatCheckutility.get_blob_ids_greater_than_given_size">
+<code class="descname">get_blob_ids_greater_than_given_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitbigcommits/core/git_commit_utility.html#GitFatCheckutility.get_blob_ids_greater_than_given_size"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gitbigcommits.core.git_commit_utility.GitFatCheckutility.get_blob_ids_greater_than_given_size" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">blobids greater than the given threshold size</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gitbigcommits.core.git_commit_utility.GitFatCheckutility.get_branch_form_a_commit">
+<code class="descname">get_branch_form_a_commit</code><span class="sig-paren">(</span><em>commit_sha</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitbigcommits/core/git_commit_utility.html#GitFatCheckutility.get_branch_form_a_commit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gitbigcommits.core.git_commit_utility.GitFatCheckutility.get_branch_form_a_commit" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>commit_sha</strong> – hashid of a commit object</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">branch name associated with the commit</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gitbigcommits.core.git_commit_utility.GitFatCheckutility.get_commits_for_a_blob">
+<code class="descname">get_commits_for_a_blob</code><span class="sig-paren">(</span><em>blob_sha</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitbigcommits/core/git_commit_utility.html#GitFatCheckutility.get_commits_for_a_blob"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gitbigcommits.core.git_commit_utility.GitFatCheckutility.get_commits_for_a_blob" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>blob_sha</strong> – hashid of a blob object</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">all commit ids which has reference/points to that blob</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gitbigcommits.core.git_commit_utility.GitFatCheckutility.get_dormant_branch_info">
+<code class="descname">get_dormant_branch_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitbigcommits/core/git_commit_utility.html#GitFatCheckutility.get_dormant_branch_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gitbigcommits.core.git_commit_utility.GitFatCheckutility.get_dormant_branch_info" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a sorted list containing <a class="reference internal" href="#gitbigcommits.core.git_commit_utility.ExtraCommitInfo" title="gitbigcommits.core.git_commit_utility.ExtraCommitInfo"><code class="xref py py-class docutils literal"><span class="pre">ExtraCommitInfo</span></code></a> object.</td>
+</tr>
+</tbody>
+</table>
+<p>The list
+contains all branches available.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gitbigcommits.core.git_commit_utility.GitFatCheckutility.get_file_name_for_blob_id">
+<code class="descname">get_file_name_for_blob_id</code><span class="sig-paren">(</span><em>blob_sha</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitbigcommits/core/git_commit_utility.html#GitFatCheckutility.get_file_name_for_blob_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gitbigcommits.core.git_commit_utility.GitFatCheckutility.get_file_name_for_blob_id" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>blob_sha</strong> – hashid of a blob object</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">file name of the blob</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gitbigcommits.core.git_commit_utility.GitFatCheckutility.print_file_with_info">
+<code class="descname">print_file_with_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitbigcommits/core/git_commit_utility.html#GitFatCheckutility.print_file_with_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gitbigcommits.core.git_commit_utility.GitFatCheckutility.print_file_with_info" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">prints all information in the console</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gitbigcommits.core.git_data_collection">
+<span id="gitbigcommits-core-git-data-collection-module"></span><h2>gitbigcommits.core.git_data_collection module<a class="headerlink" href="#module-gitbigcommits.core.git_data_collection" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gitbigcommits.core.git_data_collection.CommitInfo">
+<em class="property">class </em><code class="descclassname">gitbigcommits.core.git_data_collection.</code><code class="descname">CommitInfo</code><span class="sig-paren">(</span><em>author</em>, <em>email</em>, <em>subject</em>, <em>timestamp</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitbigcommits/core/git_data_collection.html#CommitInfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gitbigcommits.core.git_data_collection.CommitInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="class">
+<dt id="gitbigcommits.core.git_data_collection.CommitInfo.CommitInfo">
+<em class="property">class </em><code class="descname">CommitInfo</code><a class="headerlink" href="#gitbigcommits.core.git_data_collection.CommitInfo.CommitInfo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>This is just a object to hold a commit id related info. This is used i
+nternally.</p>
+<p>This object contains the following variables
+author: author of the commid id
+email: mail id of the committer
+subject: subject of the commit id
+timestamp: time when the commit happened</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="gitbigcommits.core.git_data_collection.GitFatFiles">
+<em class="property">class </em><code class="descclassname">gitbigcommits.core.git_data_collection.</code><code class="descname">GitFatFiles</code><span class="sig-paren">(</span><em>folder_path</em>, <em>file_size=25000</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitbigcommits/core/git_data_collection.html#GitFatFiles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gitbigcommits.core.git_data_collection.GitFatFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="class">
+<dt id="gitbigcommits.core.git_data_collection.GitFatFiles.GitFatFiles">
+<em class="property">class </em><code class="descname">GitFatFiles</code><a class="headerlink" href="#gitbigcommits.core.git_data_collection.GitFatFiles.GitFatFiles" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>folder_path</strong> – git folder path, where the .git directory is</td>
+</tr>
+</tbody>
+</table>
+<p>present
+:param file_size: threshold file size</p>
+<dl class="method">
+<dt id="gitbigcommits.core.git_data_collection.GitFatFiles.find_blob_for_a_commit">
+<code class="descname">find_blob_for_a_commit</code><span class="sig-paren">(</span><em>commit_hash</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitbigcommits/core/git_data_collection.html#GitFatFiles.find_blob_for_a_commit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gitbigcommits.core.git_data_collection.GitFatFiles.find_blob_for_a_commit" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>commit_hash</strong> – hashid of a commit object</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">all blobids which are referenced/poined by this commit object</td>
+</tr>
+</tbody>
+</table>
+<p>also it returns a dict of mapping between blobid vs file names.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gitbigcommits.core.git_data_collection.GitFatFiles.find_info_for_a_commit_id">
+<code class="descname">find_info_for_a_commit_id</code><span class="sig-paren">(</span><em>commit_sha</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitbigcommits/core/git_data_collection.html#GitFatFiles.find_info_for_a_commit_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gitbigcommits.core.git_data_collection.GitFatFiles.find_info_for_a_commit_id" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>commit_sha</strong> – hashid of a commit</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">author_name, author_email, subject of commit, timestamp of</td>
+</tr>
+</tbody>
+</table>
+<p>commit will be returned.</p>
+<p>Change this method if you need more info from a commit id</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gitbigcommits.core.git_data_collection.GitFatFiles.get_all_objects_list_in_git">
+<code class="descname">get_all_objects_list_in_git</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitbigcommits/core/git_data_collection.html#GitFatFiles.get_all_objects_list_in_git"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gitbigcommits.core.git_data_collection.GitFatFiles.get_all_objects_list_in_git" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dictionary which contains all object ids as key(blob, commit)</td>
+</tr>
+</tbody>
+</table>
+<p>the value maybe none if it is a commit id, if it is a blob id,
+value is name of the file where the blobid points to.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gitbigcommits.core.git_data_collection.GitFatFiles.get_blob_ids_from_pack_file">
+<code class="descname">get_blob_ids_from_pack_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitbigcommits/core/git_data_collection.html#GitFatFiles.get_blob_ids_from_pack_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gitbigcommits.core.git_data_collection.GitFatFiles.get_blob_ids_from_pack_file" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">list of blob ids which are greater than given specified size.</td>
+</tr>
+</tbody>
+</table>
+<p>This unpacks all the index file and find the size of each blob ids.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gitbigcommits.core.git_data_collection.GitFatFiles.get_commit_ids_for_a_branch">
+<code class="descname">get_commit_ids_for_a_branch</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitbigcommits/core/git_data_collection.html#GitFatFiles.get_commit_ids_for_a_branch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gitbigcommits.core.git_data_collection.GitFatFiles.get_commit_ids_for_a_branch" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dictionary where commit_id is the key, and branch name as</td>
+</tr>
+</tbody>
+</table>
+<p>value.</p>
+<p>it is applicable only for all the remote branches</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gitbigcommits.core.git_data_collection.GitFatFiles.get_commit_list_for_a_branch">
+<code class="descname">get_commit_list_for_a_branch</code><span class="sig-paren">(</span><em>branch_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitbigcommits/core/git_data_collection.html#GitFatFiles.get_commit_list_for_a_branch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gitbigcommits.core.git_data_collection.GitFatFiles.get_commit_list_for_a_branch" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>branch_name</strong> – branch name</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list of commit ids associated with the branch</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gitbigcommits.core.git_data_collection.GitFatFiles.get_subprocess">
+<code class="descname">get_subprocess</code><span class="sig-paren">(</span><em>command</em>, <em>shell=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitbigcommits/core/git_data_collection.html#GitFatFiles.get_subprocess"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gitbigcommits.core.git_data_collection.GitFatFiles.get_subprocess" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>command</strong> – command to execute in shell</li>
+<li><strong>shell</strong> – if set to true, can cause code injection.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">output of the command</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gitbigcommits.core">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-gitbigcommits.core" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="gitbigcommits.prevent_commits.html"
+                        title="previous chapter">gitbigcommits.prevent_commits package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="gitbigcommits.report_layer.html"
+                        title="next chapter">gitbigcommits.report_layer package</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="gitbigcommits.report_layer.html" title="gitbigcommits.report_layer package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="gitbigcommits.prevent_commits.html" title="gitbigcommits.prevent_commits package"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">GitBigCommits 1.0.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Viswesh M.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
+    </div>
+  </body>
+</html>

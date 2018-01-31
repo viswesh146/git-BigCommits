@@ -1,0 +1,186 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Welcome to GitBigCommits’s documentation! &#8212; GitBigCommits 1.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="gitbigcommits package" href="gitbigcommits.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="gitbigcommits.html" title="gitbigcommits package"
+             accesskey="N">next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">GitBigCommits 1.0.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-gitbigcommits-s-documentation">
+<h1>Welcome to GitBigCommits’s documentation!<a class="headerlink" href="#welcome-to-gitbigcommits-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p><strong>Functionality:</strong></p>
+<p>This module is useful for three purpose:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>You want to find the big commits happened in your git repo and who has
+committed that at what time.</li>
+<li>You want to find the dormant branches in your git repo and who is the
+author of the branch</li>
+<li>You want to prevent large commits in your local repo.</li>
+</ol>
+</div></blockquote>
+<p><em>NOTE:</em> All you need to do is give your repositry location as input to this
+module. It does not need your git credentials.
+Also, It will find large commits across all branches present in the repo</p>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">Gitbigcommits</span></code></div></blockquote>
+<dl class="docutils">
+<dt>Once you install, the following below commands will be available to you in your</dt>
+<dd><p class="first">terminal.</p>
+<ol class="last arabic simple">
+<li>bigcommits - prints big commits to stdout</li>
+<li>bigcommits-html - creates a html file and writes the report to that.</li>
+<li>dbranch-html - find the dormant branch in your repo and writes into a html</li>
+<li>bigcommits-prevent - once you execute this, your local repo will prevent
+large commits to be happened in your repo</li>
+</ol>
+</dd>
+</dl>
+<p><strong>Supported Outputs:</strong></p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Reports can be generated as HTML file.</li>
+<li>Console output</li>
+</ol>
+</div></blockquote>
+<p><strong>Usage:</strong></p>
+<p>bigcommits &lt;git_location_in_your_machine&gt; &lt;size_in_kb&gt;</p>
+<p><em>Eg:</em></p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">$bigcommits</span> <span class="s2">&quot;usr/home/myrepo/&quot;</span> <span class="m">1024</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Your git directory is in the “usr/home/myrepo” folder. git directory denotes
+where your “.git” folder is present.</p>
+<p>Similarly,</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">$bigcommits</span>-html <span class="s2">&quot;usr/home/myrepo/&quot;</span> <span class="m">1024</span>
+
+<span class="nv">$dbranch</span>-html <span class="s2">&quot;usr/home/myrepo/&quot;</span> <span class="m">1</span>
+
+<span class="nv">$bigcommits</span>-prevent <span class="s2">&quot;usr/home/myrepo/&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>if you are a developer, looking for more reports or customization, directly
+look into <a class="reference internal" href="gitbigcommits.core.html#git-core-label"><span class="std std-ref">gitbigcommits.core.git_commit_utility module</span></a>. docs</p>
+<p>Sample initialization</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;from gitbigcommits.core.git_commit_utility import GitFatCheckutility</span>
+<span class="go">&gt;&gt;&gt;git_util = GitFatCheckutility(&#39;/usr/home/repo&#39;, &#39;1024&#39;)</span>
+<span class="go">&gt;&gt;&gt;git_util.get_all_file_with_info()</span>
+</pre></div>
+</div>
+</div></blockquote>
+<span class="target" id="module-gitbigcommits"></span><div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gitbigcommits.html">gitbigcommits package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gitbigcommits.html#subpackages">Subpackages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gitbigcommits.html#module-gitbigcommits">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gitbigcommits.core.html">gitbigcommits.core package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gitbigcommits.core.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gitbigcommits.core.html#module-gitbigcommits.core.git_commit_utility">gitbigcommits.core.git_commit_utility module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gitbigcommits.core.html#module-gitbigcommits.core.git_data_collection">gitbigcommits.core.git_data_collection module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gitbigcommits.core.html#module-gitbigcommits.core">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gitbigcommits.report_layer.html">gitbigcommits.report_layer package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gitbigcommits.report_layer.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gitbigcommits.report_layer.html#module-gitbigcommits.report_layer.git_html_report">gitbigcommits.report_layer.git_html_report module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gitbigcommits.report_layer.html#module-gitbigcommits.report_layer">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Next topic</h4>
+  <p class="topless"><a href="gitbigcommits.html"
+                        title="next chapter">gitbigcommits package</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="gitbigcommits.html" title="gitbigcommits package"
+             >next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">GitBigCommits 1.0.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Viswesh M.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
+    </div>
+  </body>
+</html>

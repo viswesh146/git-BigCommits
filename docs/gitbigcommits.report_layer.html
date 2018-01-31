@@ -1,0 +1,174 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>gitbigcommits.report_layer package &#8212; GitBigCommits 1.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="gitbigcommits.core package" href="gitbigcommits.core.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="gitbigcommits.core.html" title="gitbigcommits.core package"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">GitBigCommits 1.0.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="gitbigcommits-report-layer-package">
+<h1>gitbigcommits.report_layer package<a class="headerlink" href="#gitbigcommits-report-layer-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-gitbigcommits.report_layer.git_html_report">
+<span id="gitbigcommits-report-layer-git-html-report-module"></span><h2>gitbigcommits.report_layer.git_html_report module<a class="headerlink" href="#module-gitbigcommits.report_layer.git_html_report" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="gitbigcommits.report_layer.git_html_report.console_output">
+<code class="descclassname">gitbigcommits.report_layer.git_html_report.</code><code class="descname">console_output</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitbigcommits/report_layer/git_html_report.html#console_output"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gitbigcommits.report_layer.git_html_report.console_output" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<p>The output will be printed in the std output
+This will be called when the command-line command <cite>cygitcheck</cite> is invoked.</p>
+<p>use: cygitcheck &lt;GitFolderPath&gt; &lt;ThresholdSize&gt;
+GitFolderPath denotes where “.git” folder is</p>
+<blockquote>
+<div>present</div></blockquote>
+<p>Eg: cygitcheck ‘/usr/home/viswesh/myrepo’ 1024</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gitbigcommits.report_layer.git_html_report.dorm_branch_html_output">
+<code class="descclassname">gitbigcommits.report_layer.git_html_report.</code><code class="descname">dorm_branch_html_output</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitbigcommits/report_layer/git_html_report.html#dorm_branch_html_output"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gitbigcommits.report_layer.git_html_report.dorm_branch_html_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is to find the dormant branch present in your repo.</p>
+<dl class="docutils">
+<dt>Input to this method is two environmental variables.</dt>
+<dd>1)GIT_FOLDER_DIR
+2)GIT_DORMANT_TIME default value is 50 days. set to 0 to find all branch</dd>
+</dl>
+<p>info
+:return: None4320000</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gitbigcommits.report_layer.git_html_report.fat_html_output">
+<code class="descclassname">gitbigcommits.report_layer.git_html_report.</code><code class="descname">fat_html_output</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitbigcommits/report_layer/git_html_report.html#fat_html_output"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gitbigcommits.report_layer.git_html_report.fat_html_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>This writes the output into a html file ‘git_fat_files.html’.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gitbigcommits.report_layer.git_html_report.get_output_list">
+<code class="descclassname">gitbigcommits.report_layer.git_html_report.</code><code class="descname">get_output_list</code><span class="sig-paren">(</span><em>git_folder=None</em>, <em>threshold_size=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitbigcommits/report_layer/git_html_report.html#get_output_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gitbigcommits.report_layer.git_html_report.get_output_list" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>git_folder</strong> – Location of git repo folder.</li>
+<li><strong>threshold_size</strong> – size in KB</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">list of dictionary with all info</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>This will generate a list of the big commits in your
+repo. The input to the methos is your git directory,
+and the threshold file size.</p>
+<p>It can be set in the  enviornmental variable “GIT_FOLDER_DIR” and
+“GIT_FILE_SIZE”
+eg:
+export GIT_FOLDER_DIR=”usr/home/myrepo/”
+export GIT_FILE_SIZE=”1024”   size is in Kb</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-gitbigcommits.report_layer">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-gitbigcommits.report_layer" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="gitbigcommits.core.html"
+                        title="previous chapter">gitbigcommits.core package</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="gitbigcommits.core.html" title="gitbigcommits.core package"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">GitBigCommits 1.0.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Viswesh M.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
+    </div>
+  </body>
+</html>

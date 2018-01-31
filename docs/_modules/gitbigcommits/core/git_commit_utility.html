@@ -1,0 +1,280 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>gitbigcommits.core.git_commit_utility &#8212; GitBigCommits 1.0.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">GitBigCommits 1.0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for gitbigcommits.core.git_commit_utility</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">gitbigcommits.core.git_data_collection</span> <span class="k">import</span> <span class="n">GitFatFiles</span><span class="p">,</span> <span class="n">CommitInfo</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="ExtraCommitInfo"><a class="viewcode-back" href="../../../gitbigcommits.core.html#gitbigcommits.core.git_commit_utility.ExtraCommitInfo">[docs]</a><span class="k">class</span> <span class="nc">ExtraCommitInfo</span><span class="p">(</span><span class="n">CommitInfo</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    .. py:class:: ExtraCommitInfo</span>
+<span class="sd">    This class hold info related to the commit object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">last_commit_info_obj</span><span class="p">,</span> <span class="n">diff_time</span><span class="p">,</span> <span class="n">branch_name</span><span class="p">,</span>
+                 <span class="n">first_commit_info</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_commit_obj</span> <span class="o">=</span> <span class="n">last_commit_info_obj</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">diff_time</span> <span class="o">=</span> <span class="n">diff_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">branch_name</span> <span class="o">=</span> <span class="n">branch_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">first_commit_obj</span> <span class="o">=</span> <span class="n">first_commit_info</span>
+
+    <span class="k">def</span> <span class="nf">__cmp__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">other</span><span class="o">.</span><span class="n">diff_time</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">diff_time</span></div>
+
+
+<div class="viewcode-block" id="GitFatCheckutility"><a class="viewcode-back" href="../../../gitbigcommits.core.html#gitbigcommits.core.git_commit_utility.GitFatCheckutility">[docs]</a><span class="k">class</span> <span class="nc">GitFatCheckutility</span><span class="p">(</span><span class="n">GitFatFiles</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    .. py:class:: GitFatCheckutility</span>
+
+<span class="sd">    :param git_folder_path: Directory of your git repo</span>
+<span class="sd">    :param threshold_size_in_kb: The size which you consider as big commits, given in kb.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">git_folder_path</span><span class="p">,</span> <span class="n">threshold_size_in_kb</span><span class="p">):</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">GitFatCheckutility</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">git_folder_path</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">threshold_size_in_kb</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">)</span>
+
+<div class="viewcode-block" id="GitFatCheckutility.get_commits_for_a_blob"><a class="viewcode-back" href="../../../gitbigcommits.core.html#gitbigcommits.core.git_commit_utility.GitFatCheckutility.get_commits_for_a_blob">[docs]</a>    <span class="k">def</span> <span class="nf">get_commits_for_a_blob</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">blob_sha</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param blob_sha: hashid of a blob object</span>
+<span class="sd">        :return: all commit ids which has reference/points to that blob</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">blob_commit_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">blob_sha</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GitFatCheckutility.get_file_name_for_blob_id"><a class="viewcode-back" href="../../../gitbigcommits.core.html#gitbigcommits.core.git_commit_utility.GitFatCheckutility.get_file_name_for_blob_id">[docs]</a>    <span class="k">def</span> <span class="nf">get_file_name_for_blob_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">blob_sha</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :param blob_sha: hashid of a blob object</span>
+<span class="sd">        :return: file name of the blob</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">blob_id_file_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">blob_sha</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GitFatCheckutility.get_branch_form_a_commit"><a class="viewcode-back" href="../../../gitbigcommits.core.html#gitbigcommits.core.git_commit_utility.GitFatCheckutility.get_branch_form_a_commit">[docs]</a>    <span class="k">def</span> <span class="nf">get_branch_form_a_commit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">commit_sha</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :param commit_sha: hashid of a commit object</span>
+<span class="sd">        :return: branch name associated with the commit</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">commit_branch_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">commit_sha</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GitFatCheckutility.get_all_remote_branch_list"><a class="viewcode-back" href="../../../gitbigcommits.core.html#gitbigcommits.core.git_commit_utility.GitFatCheckutility.get_all_remote_branch_list">[docs]</a>    <span class="k">def</span> <span class="nf">get_all_remote_branch_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :return: all remote branches available as a list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">branch_list</span></div>
+
+<div class="viewcode-block" id="GitFatCheckutility.form_all_info_for_a_blob_sha"><a class="viewcode-back" href="../../../gitbigcommits.core.html#gitbigcommits.core.git_commit_utility.GitFatCheckutility.form_all_info_for_a_blob_sha">[docs]</a>    <span class="k">def</span> <span class="nf">form_all_info_for_a_blob_sha</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">blob_sha</span><span class="p">,</span> <span class="n">time_zone</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :param blob_sha: hashid of a blob object</span>
+<span class="sd">        :param time_zone: in the remote repo, the timezone may be different</span>
+<span class="sd">        from your local time zone, give your timezone. (default None).</span>
+<span class="sd">        :return: a dict of all necessary info</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">blob_info</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="n">all_commit_ids</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_commits_for_a_blob</span><span class="p">(</span><span class="n">blob_sha</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">all_commit_ids</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Unable to find commit ids, probably git gc had &quot;</span>
+                           <span class="s2">&quot;not been run yet for blob_id </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">blob_sha</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">first_commit_id</span> <span class="o">=</span> <span class="n">all_commit_ids</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">all_commit_ids</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">commit_info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_info_for_a_commit_id</span><span class="p">(</span><span class="n">first_commit_id</span><span class="p">)</span>
+        <span class="n">blob_info</span><span class="p">[</span><span class="s1">&#39;first_commit_sha&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">first_commit_id</span>
+        <span class="n">blob_info</span><span class="p">[</span><span class="s1">&#39;file_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_file_name_for_blob_id</span><span class="p">(</span><span class="n">blob_sha</span><span class="p">)</span>
+        <span class="n">blob_info</span><span class="p">[</span><span class="s1">&#39;branch&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_branch_form_a_commit</span><span class="p">(</span>
+            <span class="n">first_commit_id</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">blob_info</span><span class="p">[</span><span class="s1">&#39;branch&#39;</span><span class="p">]:</span>
+            <span class="n">blob_info</span><span class="p">[</span><span class="s1">&#39;branch&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Error in getting branch info :( &quot;</span>
+            <span class="n">blob_info</span><span class="p">[</span><span class="s1">&#39;other_info&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;It has been merged&quot;</span>
+        <span class="n">blob_info</span><span class="p">[</span><span class="s1">&#39;branch_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">blob_info</span><span class="p">[</span><span class="s1">&#39;branch&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">blob_info</span><span class="p">[</span><span class="s1">&#39;author_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">commit_info</span><span class="o">.</span><span class="n">author</span>
+        <span class="n">blob_info</span><span class="p">[</span><span class="s1">&#39;author_email&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">commit_info</span><span class="o">.</span><span class="n">email</span>
+        <span class="n">blob_info</span><span class="p">[</span><span class="s1">&#39;first_commit_subject&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">commit_info</span><span class="o">.</span><span class="n">subject</span>
+        <span class="n">blob_info</span><span class="p">[</span><span class="s1">&#39;unix_time_stamp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">commit_info</span><span class="o">.</span><span class="n">timestamp</span>
+        <span class="n">blob_info</span><span class="p">[</span><span class="s1">&#39;size_in_kb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">blob_size_in_bytes</span><span class="p">[</span>
+                                                <span class="n">blob_sha</span><span class="p">])</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="mi">1024</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">blob_info</span><span class="p">[</span><span class="s1">&#39;size_in_mb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">blob_size_in_bytes</span><span class="p">[</span>
+                                                <span class="n">blob_sha</span><span class="p">])</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span>
+            <span class="p">(</span><span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">blob_info</span><span class="p">[</span><span class="s1">&#39;commit_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span>
+            <span class="nb">int</span><span class="p">(</span><span class="n">blob_info</span><span class="p">[</span><span class="s1">&#39;unix_time_stamp&#39;</span><span class="p">]),</span> <span class="n">time_zone</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span>
+            <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S&#39;</span><span class="p">)</span>
+        <span class="c1"># blob_info[&#39;all_commit_ids&#39;] = all_commit_ids</span>
+
+        <span class="k">return</span> <span class="n">blob_info</span></div>
+
+<div class="viewcode-block" id="GitFatCheckutility.get_blob_ids_greater_than_given_size"><a class="viewcode-back" href="../../../gitbigcommits.core.html#gitbigcommits.core.git_commit_utility.GitFatCheckutility.get_blob_ids_greater_than_given_size">[docs]</a>    <span class="k">def</span> <span class="nf">get_blob_ids_greater_than_given_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :return: blobids greater than the given threshold size</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_blob_ids_from_pack_file</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="GitFatCheckutility.print_file_with_info"><a class="viewcode-back" href="../../../gitbigcommits.core.html#gitbigcommits.core.git_commit_utility.GitFatCheckutility.print_file_with_info">[docs]</a>    <span class="k">def</span> <span class="nf">print_file_with_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :return: prints all information in the console</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">list_of_tuple</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_blob_ids_greater_than_given_size</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">list_of_tuple</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">form_all_info_for_a_blob_sha</span><span class="p">(</span><span class="n">entry</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span></div>
+
+    <span class="k">def</span> <span class="nf">_get_all_file_with_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">list_of_fat_checkins</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="n">list_of_tuple</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_blob_ids_greater_than_given_size</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">list_of_tuple</span><span class="p">:</span>
+            <span class="n">all_info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">form_all_info_for_a_blob_sha</span><span class="p">(</span><span class="n">entry</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">all_info</span><span class="p">:</span>
+                <span class="n">list_of_fat_checkins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">form_all_info_for_a_blob_sha</span><span class="p">(</span>
+                    <span class="n">entry</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="k">return</span> <span class="n">list_of_fat_checkins</span>
+
+<div class="viewcode-block" id="GitFatCheckutility.get_dormant_branch_info"><a class="viewcode-back" href="../../../gitbigcommits.core.html#gitbigcommits.core.git_commit_utility.GitFatCheckutility.get_dormant_branch_info">[docs]</a>    <span class="k">def</span> <span class="nf">get_dormant_branch_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :return: a sorted list containing :py:class:`ExtraCommitInfo` object.</span>
+<span class="sd">        The list</span>
+<span class="sd">        contains all branches available.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">branch_last_commit_info_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="n">branch_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_all_remote_branch_list</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">branch</span> <span class="ow">in</span> <span class="n">branch_list</span><span class="p">:</span>
+            <span class="n">commit_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_commit_list_for_a_branch</span><span class="p">(</span><span class="n">branch</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">commit_list</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Not checking branch </span><span class="si">%s</span><span class="s2">, probably merged&quot;</span><span class="p">,</span>
+                               <span class="n">branch</span><span class="p">)</span>
+                <span class="k">continue</span>
+            <span class="n">first_commit_id</span> <span class="o">=</span> <span class="n">commit_list</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">commit_list</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">last_commit_id</span> <span class="o">=</span> <span class="n">commit_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">first_commit_info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_info_for_a_commit_id</span><span class="p">(</span><span class="n">first_commit_id</span><span class="p">)</span>
+            <span class="n">last_commit_info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_info_for_a_commit_id</span><span class="p">(</span><span class="n">last_commit_id</span><span class="p">)</span>
+            <span class="n">diff_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">last_commit_info</span><span class="o">.</span><span class="n">timestamp</span><span class="p">)</span>
+            <span class="n">branch_last_commit_info_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ExtraCommitInfo</span><span class="p">(</span>
+                <span class="n">last_commit_info</span><span class="p">,</span> <span class="n">diff_time</span><span class="p">,</span> <span class="n">branch</span><span class="p">,</span> <span class="n">first_commit_info</span><span class="p">))</span>
+
+        <span class="n">sorted_list</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">branch_last_commit_info_list</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">sorted_list</span></div>
+
+<div class="viewcode-block" id="GitFatCheckutility.domant_branch_info"><a class="viewcode-back" href="../../../gitbigcommits.core.html#gitbigcommits.core.git_commit_utility.GitFatCheckutility.domant_branch_info">[docs]</a>    <span class="k">def</span> <span class="nf">domant_branch_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">threshold_val</span><span class="o">=</span><span class="mi">4320000</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :param threshold_val: the value beyond which the branch is</span>
+<span class="sd">        considered as dormant. It is given in seconds. (default 4320000)</span>
+<span class="sd">        which is 50 days.</span>
+<span class="sd">        :return: a list of dictionary with branch information above the given threshold value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">list_of_branches_with_info</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="n">exta_commit_info_objs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dormant_branch_info</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">extra_commit_info</span> <span class="ow">in</span> <span class="n">exta_commit_info_objs</span><span class="p">:</span>
+            <span class="n">commit_info_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+            <span class="n">full_branch_name</span> <span class="o">=</span> <span class="n">extra_commit_info</span><span class="o">.</span><span class="n">branch_name</span>
+            <span class="n">commit_info_dict</span><span class="p">[</span><span class="s1">&#39;full_branch_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">full_branch_name</span>
+            <span class="n">commit_info_dict</span><span class="p">[</span><span class="s1">&#39;branch&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">full_branch_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">commit_info_dict</span><span class="p">[</span><span class="s1">&#39;last_commit_time&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="n">extra_commit_info</span><span class="o">.</span><span class="n">last_commit_obj</span><span class="o">.</span><span class="n">timestamp</span>
+            <span class="n">commit_info_dict</span><span class="p">[</span><span class="s1">&#39;author_name&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="n">extra_commit_info</span><span class="o">.</span><span class="n">last_commit_obj</span><span class="o">.</span><span class="n">author</span>
+            <span class="n">commit_info_dict</span><span class="p">[</span><span class="s1">&#39;author_email&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="n">extra_commit_info</span><span class="o">.</span><span class="n">last_commit_obj</span><span class="o">.</span><span class="n">email</span>
+            <span class="n">commit_info_dict</span><span class="p">[</span><span class="s1">&#39;last_commit_subject&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="n">extra_commit_info</span><span class="o">.</span><span class="n">last_commit_obj</span><span class="o">.</span><span class="n">subject</span>
+            <span class="n">commit_info_dict</span><span class="p">[</span><span class="s1">&#39;difference_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">extra_commit_info</span><span class="o">.</span><span class="n">diff_time</span>
+            <span class="n">commit_info_dict</span><span class="p">[</span><span class="s1">&#39;last_commit_h_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span>
+                <span class="nb">int</span><span class="p">(</span>
+                    <span class="n">extra_commit_info</span><span class="o">.</span><span class="n">last_commit_obj</span><span class="o">.</span><span class="n">timestamp</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span>
+                <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">extra_commit_info</span><span class="o">.</span><span class="n">diff_time</span> <span class="o">-</span> <span class="n">threshold_val</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">list_of_branches_with_info</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">commit_info_dict</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">list_of_branches_with_info</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">GitBigCommits 1.0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Viswesh M.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
+    </div>
+  </body>
+</html>
