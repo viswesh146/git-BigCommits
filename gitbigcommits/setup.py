@@ -4,7 +4,7 @@ from setuptools import setup
 import pkg_resources
 
 setup(name='Gitbigcommits',
-      version='1.0.2',
+      version='1.0.3',
       description='Reporting tool for large commits happened in your git repo',
       author='Viswesh M',
       author_email='mviswesh5@gmail.com',
