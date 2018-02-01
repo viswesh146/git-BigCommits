@@ -4,6 +4,9 @@ from gitbigcommits.core.git_commit_utility import GitFatCheckutility
 import os
 import sys
 import pkg_resources
+import logging
+
+logging.basicConfig()
 
 def get_output_list(git_folder=None, threshold_size=None):
     '''
@@ -89,7 +92,7 @@ def fat_html_output():
     with open('git_fat_files.html', 'w') as html_file:
         html_file.write(str(template))
 
-    print("Successfully generated html, file name is : %s",template_name)
+    print("Successfully generated html, file name is : %s" % template_name)
 
 
 def dorm_branch_html_output():
@@ -130,5 +133,5 @@ def dorm_branch_html_output():
     with open('git_dorm_branch.html', 'w') as html_file:
         html_file.write(str(template))
 
-    print("Successfully generated html, file name is : %s", template_name)
+    print("Successfully generated html, file name is : %s" % template_name)
 

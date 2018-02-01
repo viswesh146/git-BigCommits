@@ -6,6 +6,37 @@
 Welcome to GitBigCommits's documentation!
 =========================================
 
+**Installation**
+
+   Even if you are new to python, it is fairly easy to execute this and get
+   your report.
+
+   To run this, you need two things.
+
+   1) `Python <https://www.python.org/downloads/>`_.
+   2) `Pip <https://pip.pypa.io/en/stable/installing/#do-i-need-to-install
+   -pip>`_ (Package Manger for Python).
+
+Python is by default installed if you are using Linux or MAC, so
+all you need to do is install Pip.
+
+For MAC:
+
+   .. code-block:: bash
+
+        sudo easy_install pip
+
+For Linux, detailed article is `here <https://www.tecmint.com/install-pip-in-linux/>`_
+
+Once you have installed, you can run the below to get this up and running.
+
+      .. code-block:: bash
+
+          pip install Gitbigcommits
+
+
+This is compatible with both Python2 and Python3.
+
 **Functionality:**
 
 This module is useful for three purpose:
